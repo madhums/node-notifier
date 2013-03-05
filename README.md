@@ -18,22 +18,20 @@ or include it in `package.json`
 var Notifier = require('notifier')
 
 Notiier.config({
-  templates: 'path/to/templates',
   APN: false,
   facebook: true,
   mails: true,
   actions: ['comments', 'likes', 'wants', 'transactions']
 })
 ```
-
-Note that items in the actions are available as methods for the notifier.
+The path to the template is the relative path. Also note that items in the actions are available as methods for the notifier.
 
 ```js
 Notifier.comments({
   to: 'asd@asd.s',
   subject: 'ab ad a asd',
   from: 'asdas@sada',
-  body: 'path/to/template', // should be the path to the template
-  object: comment // should be the object containing the objects used in the templates
+  tplPath: 'path/to/template', // should be the path to the template
+  locals: comment // should be the object containing the objects used in the templates
 })
 ```
