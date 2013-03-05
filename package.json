@@ -20,7 +20,8 @@
   "dependencies": {
     "postmark": "latest",
     "fb": "latest",
-    "node-parse-api": "latest"
+    "node-parse-api": "latest",
+    "jade": "latest"
   },
   "author": "Madhusudhan Srinivasa, Vinit Kumar",
   "license": "MIT"
