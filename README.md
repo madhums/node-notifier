@@ -1,6 +1,6 @@
 ## Notifier
 
-A simple node.js module to handle all the application level notifications
+A simple node.js module to handle all the application level notifications (apple push notifications, mails and facebook posts)
 
 ## Installation
 
@@ -12,26 +12,34 @@ or include it in `package.json`
 
 ## Usage
 
-** Note ** : Work in progress, do not use it yet
+*Note* : Work in progress, do not use it yet
 
 ```js
-var Notifier = require('notifier')
+var notifier = new Notifier();
 
-Notiier.config({
+notifier.use({
   APN: false,
   facebook: true,
-  mails: true,
-  actions: ['comments', 'likes', 'wants', 'transactions']
-})
-```
-The path to the template is the relative path. Also note that items in the actions are available as methods for the notifier.
+  email: true,
+  actions: ['comment', 'like'],
+  tplPath: require('path').resolve(__dirname, './templates')
+});
 
-```js
-Notifier.comments({
-  to: 'asd@asd.s',
+var comment = {
+  to: 'Tom',
+  from: 'Harry'
+}
+
+notifier.send('comment', {
+  to: 'to@madhums.me',
   subject: 'ab ad a asd',
-  from: 'asdas@sada',
-  tplPath: 'path/to/template', // should be the path to the template
+  from: 'harry@madhums.me',
   locals: comment // should be the object containing the objects used in the templates
-})
+});
+```
+
+## Tests
+
+```sh
+$ npm test
 ```
