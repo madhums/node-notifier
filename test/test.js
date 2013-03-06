@@ -1,7 +1,7 @@
 
 var Notifier = require('../');
 
-exports.testConfig = function (test) {
+exports.testNotifier = function (test) {
   var notifier = new Notifier();
 
   notifier.use({
