@@ -23,6 +23,17 @@
     "node-parse-api": "latest",
     "jade": "latest"
   },
-  "author": "Madhusudhan Srinivasa, Vinit Kumar",
+  "devDependencies": {
+    "nodeunit": ">0.0.0"
+  },
+  "author": {
+    "name": "Madhusudhan Srinivasa",
+    "email": "madhums8@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Vinit Kumar"
+    }
+  ],
   "license": "MIT"
 }
