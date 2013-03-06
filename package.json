@@ -4,7 +4,7 @@
   "description": "A notifications module for node.js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test ./node_modules/.bin/nodeunit test/*.js"
   },
   "repository": {
     "type": "git",
