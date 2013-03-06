@@ -20,10 +20,9 @@ var notifier = new Notifier({
   facebook: true,
   email: true,
   actions: ['comment', 'like'],
-  tplPath: require('path').resolve(__dirname, './templates')
+  tplPath: require('path').resolve(__dirname, './templates'),
+  postmarkKey: 'xxx'
 });
-
-notifier.use({ email: false });
 
 var comment = {
   to: 'Tom',
@@ -31,8 +30,8 @@ var comment = {
 };
 
 notifier.send('comment', {
-  to: 'to@madhums.me',
-  subject: 'ab ad a asd',
+  to: 'tom@madhums.me',
+  subject: 'Harry says Hi to you',
   from: 'harry@madhums.me',
   locals: comment // should be the object containing the objects used in the templates
 });
