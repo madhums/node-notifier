@@ -2,9 +2,7 @@
 var Notifier = require('../');
 
 exports.testNotifier = function (test) {
-  var notifier = new Notifier();
-
-  notifier.use({
+  var notifier = new Notifier({
     APN: false,
     facebook: true,
     email: true,
@@ -12,10 +10,12 @@ exports.testNotifier = function (test) {
     tplPath: require('path').resolve(__dirname, './templates')
   });
 
+  notifier.use({ email: false });
+
   var comment = {
     to: 'Tom',
     from: 'Harry'
-  }
+  };
 
   notifier.send('comment', {
     to: 'to@madhums.me',

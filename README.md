@@ -15,9 +15,7 @@ or include it in `package.json`
 *Note* : Work in progress, do not use it yet
 
 ```js
-var notifier = new Notifier();
-
-notifier.use({
+var notifier = new Notifier({
   APN: false,
   facebook: true,
   email: true,
@@ -25,10 +23,12 @@ notifier.use({
   tplPath: require('path').resolve(__dirname, './templates')
 });
 
+notifier.use({ email: false });
+
 var comment = {
   to: 'Tom',
   from: 'Harry'
-}
+};
 
 notifier.send('comment', {
   to: 'to@madhums.me',
