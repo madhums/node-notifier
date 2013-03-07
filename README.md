@@ -39,6 +39,8 @@ notifier.send('comment', {
 
 ## Tests
 
+Replace the keys in `test/test.js`
+
 ```sh
 $ npm test
 ```
