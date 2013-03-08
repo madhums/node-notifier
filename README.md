@@ -2,8 +2,6 @@
 
 A simple node.js module to handle all the application level notifications (apple push notifications, mails and facebook posts)
 
-**Note** : Work in progress, do not use it yet
-
 ## Installation
 
 ```sh
