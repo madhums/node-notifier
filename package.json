@@ -19,7 +19,6 @@
   ],
   "dependencies": {
     "postmark": "latest",
-    "fb": "latest",
     "node-parse-api": "latest",
     "jade": "latest"
   },
@@ -30,10 +29,5 @@
     "name": "Madhusudhan Srinivasa",
     "email": "madhums8@gmail.com"
   },
-  "contributors": [
-    {
-      "name": "Vinit Kumar"
-    }
-  ],
   "license": "MIT"
 }
