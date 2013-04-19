@@ -15,7 +15,6 @@ or include it in `package.json`
 ```js
 var notifier = new Notifier({
   APN: true,
-  facebook: true,
   email: true,
   actions: ['comment', 'like'],
   tplPath: require('path').resolve(__dirname, './templates'),
