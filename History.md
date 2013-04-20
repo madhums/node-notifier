@@ -1,4 +1,11 @@
 
+0.0.2 / 2013-04-20 
+==================
+
+  * updates 1. remove facebook methods and config 2. log the mail object if env is development or test 3. throw err if action is not specified in notifier config
+  * update test config
+  * update readme
+
 0.0.1 / 2013-04-17 
 ==================
 
