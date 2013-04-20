@@ -4,7 +4,6 @@ var Notifier = require('../');
 exports.testNotifier = function (test) {
   var notifier = new Notifier({
     APN: true,
-    facebook: true,
     email: true,
     actions: ['comment', 'like'],
     tplPath: require('path').resolve(__dirname, './templates'),
