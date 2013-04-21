@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/madhums/node-notifier.png)](https://travis-ci.org/madhums/node-notifier)
+
 ## Notifier
 
 A simple node.js module to handle all the application level notifications (apple push notifications, mails and facebook posts)
