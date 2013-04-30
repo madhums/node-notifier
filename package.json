@@ -23,7 +23,7 @@
     "jade": "latest"
   },
   "devDependencies": {
-    "nodeunit": ">0.0.0"
+    "nodeunit": "latest"
   },
   "author": {
     "name": "Madhusudhan Srinivasa",
