@@ -1,4 +1,11 @@
 
+0.0.4 / 2013-05-13 
+==================
+
+  * add support for different template types
+  * use latest nodeunit
+  * add travis ci
+
 0.0.3 / 2013-04-20 
 ==================
 
