@@ -18,6 +18,7 @@ or include it in `package.json`
 var notifier = new Notifier({
   APN: true,
   email: true,
+  tplType: 'ejs', // if you want to use ejs as templating system
   actions: ['comment', 'like'],
   tplPath: require('path').resolve(__dirname, './templates'),
   postmarkKey: 'POSTMARK_KEY',
@@ -45,6 +46,21 @@ notifier.send('comment', options, function (err) {
   if (err) return console.log(err);
   console.log('Successfully sent Notifiaction!');
 });
+```
+
+If you want to use a different templating engine like ejs or something else then just override the `processTemplate` method. And don't forget to use the `tplType` config option
+
+For example
+
+```js
+Notifier.prototype.processTemplate = function (tplPath, locals) {
+  var ejs = require('ejs')
+  locals.filename = tplPath
+
+  var tpl = require('fs').readFileSync(tplPath, 'utf8')
+
+  return ejs.render(tpl, locals)
+}
 ```
 
 ## Tests
