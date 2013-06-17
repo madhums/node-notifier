@@ -1,4 +1,11 @@
 
+0.1.0 / 2013-06-17 
+==================
+
+  * support sendgrid
+  * add tests for api change
+  * add sendgrid
+
 0.0.4 / 2013-05-13 
 ==================
 
