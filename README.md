@@ -16,12 +16,14 @@ or include it in `package.json`
 
 ```js
 var notifier = new Notifier({
+  service: 'postmark' // or 'sendgrid'
   APN: true,
   email: true,
   tplType: 'ejs', // if you want to use ejs as templating system
   actions: ['comment', 'like'],
   tplPath: require('path').resolve(__dirname, './templates'),
-  postmarkKey: 'POSTMARK_KEY',
+  key: 'SERVICE_KEY',
+  sendgridUser: 'SENDGRID_USER',
   parseAppId: 'APP_ID',
   parseApiKey: 'MASTER_KEY'
 });
