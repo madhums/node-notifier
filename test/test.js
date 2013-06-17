@@ -3,15 +3,25 @@ var Notifier = require('../');
 
 exports.testNotifier = function (test) {
   var tplPath = require('path').resolve(__dirname, './templates')
-  var notifier = new Notifier({
+  var options = {
     APN: true,
     email: true,
     actions: ['comment', 'like'],
     tplPath: tplPath,
-    postmarkKey: 'POSTMARK_KEY',
+    key: 'SERVICE_KEY',
+    sendgridUser: '',
     parseAppId: 'APP_ID',
     parseApiKey: 'MASTER_KEY'
-  });
+  };
+
+  test.expect(11);
+
+  test.throws(function () {
+    var notifier = new Notifier(options);
+  }, 'Please specify the service - postmark or sendgrid');
+
+  options.service = 'postmark'
+  var notifier = new Notifier(options);
 
   var comment = {
     to: 'Tom',
@@ -25,13 +35,11 @@ exports.testNotifier = function (test) {
     locals: comment // should be the object containing the objects used in the templates
   };
 
-  test.expect(10);
-
   test.equal(notifier.config.APN, true, 'APN should be true');
   test.equal(notifier.config.email, true, 'email should be true');
   test.ok(true, notifier.config.tplPath);
   test.equal(notifier.config.actions.length, 2, 'Should have two actions');
-  test.equal(notifier.config.postmarkKey, 'POSTMARK_KEY', 'Should contain the postmark key');
+  test.equal(notifier.config.key, 'SERVICE_KEY', 'Should contain the service key');
   test.equal(notifier.config.parseAppId, 'APP_ID', 'Should contain the parse api app id');
   test.equal(notifier.config.parseApiKey, 'MASTER_KEY', 'Should contain the master key');
 
