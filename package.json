@@ -18,8 +18,9 @@
     "notifications"
   ],
   "dependencies": {
-    "postmark": "latest",
     "node-parse-api": "latest",
+    "postmark": "latest",
+    "sendgrid": "latest",
     "jade": "latest"
   },
   "devDependencies": {
