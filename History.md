@@ -1,32 +1,37 @@
 
-0.1.0 / 2013-06-17 
+0.1.1 / 2013-06-17
+==================
+
+  * update all the dependencies
+
+0.1.0 / 2013-06-17
 ==================
 
   * support sendgrid
   * add tests for api change
   * add sendgrid
 
-0.0.4 / 2013-05-13 
+0.0.4 / 2013-05-13
 ==================
 
   * add support for different template types
   * use latest nodeunit
   * add travis ci
 
-0.0.3 / 2013-04-20 
+0.0.3 / 2013-04-20
 ==================
 
   * tests
   * return the object if env === test or development
 
-0.0.2 / 2013-04-20 
+0.0.2 / 2013-04-20
 ==================
 
   * updates 1. remove facebook methods and config 2. log the mail object if env is development or test 3. throw err if action is not specified in notifier config
   * update test config
   * update readme
 
-0.0.1 / 2013-04-17 
+0.0.1 / 2013-04-17
 ==================
 
   * remove fb
