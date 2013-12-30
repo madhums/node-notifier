@@ -12,6 +12,8 @@ $ npm install notifier
 
 or include it in `package.json`
 
+**NOTE**: Sending emails is disabled in 'development' and 'test' environment. (instead it will log to console)
+
 ## Usage
 
 ```js
