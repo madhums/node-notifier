@@ -1,7 +1,13 @@
+
+0.1.3 / 2013-12-25
+==================
+
+  * Allow dynamic parse channels for APN
+
 0.1.2 / 2013-12-25
 ==================
 
-  * deprecate support for node < 0.8 
+  * deprecate support for node < 0.8
 
 0.1.1 / 2013-06-17
 ==================

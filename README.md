@@ -35,16 +35,19 @@ var comment = {
   from: 'Harry'
 };
 
-notifier.use({
-  parseChannels: ['USER_5093a266180b779762000005']
-});
-
 var options = {
   to: 'tom@madhums.me',
   subject: 'Harry says Hi to you',
   from: 'harry@madhums.me',
   locals: comment // should be the object containing the objects used in the templates
 };
+
+notifier.use({
+  parseChannels: ['USER_5093a266180b779762000005']
+});
+
+// OR
+// options.parseChannels = ['USER_5093a266180b779762000005']
 
 notifier.send('comment', options, function (err) {
   if (err) return console.log(err);
