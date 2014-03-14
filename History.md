@@ -1,4 +1,9 @@
 
+0.1.4 / 2013-12-25
+==================
+
+  * Bug fix - Make sure the callback for the notifier.send method is called only once (in case of email and APN)
+
 0.1.3 / 2013-12-25
 ==================
 
