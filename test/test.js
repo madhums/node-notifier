@@ -1,69 +1,95 @@
 
 var Notifier = require('../');
 
-exports.testNotifier = function (test) {
-  var tplPath = require('path').resolve(__dirname, './templates')
-  var options = {
-    APN: true,
-    email: true,
-    actions: ['comment', 'like'],
-    tplPath: tplPath,
-    key: 'SERVICE_KEY',
-    sendgridUser: '',
-    parseAppId: 'APP_ID',
-    parseApiKey: 'MASTER_KEY'
-  };
+module.exports = {
+  setUp: function (callback) {
+    callback();
+  },
+  tearDown: function (callback) {
+    // clean up
+    callback();
+  },
+  testNotifier: function (test) {
+    var tplPath = require('path').resolve(__dirname, './templates')
+    var options = {
+      APN: true,
+      email: true,
+      actions: ['comment', 'like'],
+      tplPath: tplPath,
+      key: 'SERVICE_KEY',
+      sendgridUser: '',
+      parseAppId: 'APP_ID',
+      parseApiKey: 'MASTER_KEY'
+    };
 
-  test.expect(11);
+    test.expect(12);
 
-  test.throws(function () {
+    test.throws(function () {
+      var notifier = new Notifier(options);
+    }, 'Please specify the service - postmark or sendgrid');
+
+    options.service = 'postmark'
     var notifier = new Notifier(options);
-  }, 'Please specify the service - postmark or sendgrid');
 
-  options.service = 'postmark'
-  var notifier = new Notifier(options);
+    var comment = {
+      to: 'Tom',
+      from: 'Harry'
+    };
 
-  var comment = {
-    to: 'Tom',
-    from: 'Harry'
-  };
+    var options = {
+      to: 'tom@madhums.me',
+      subject: 'Harry says Hi to you',
+      from: 'harry@madhums.me',
+      locals: comment // should be the object containing the objects used in the templates
+    };
 
-  var options = {
-    to: 'tom@madhums.me',
-    subject: 'Harry says Hi to you',
-    from: 'harry@madhums.me',
-    locals: comment // should be the object containing the objects used in the templates
-  };
+    test.equal(notifier.config.APN, true, 'APN should be true');
+    test.equal(notifier.config.email, true, 'email should be true');
+    test.ok(true, notifier.config.tplPath);
+    test.equal(notifier.config.actions.length, 2, 'Should have two actions');
+    test.equal(notifier.config.key, 'SERVICE_KEY', 'Should contain the service key');
+    test.equal(notifier.config.parseAppId, 'APP_ID', 'Should contain the parse api app id');
+    test.equal(notifier.config.parseApiKey, 'MASTER_KEY', 'Should contain the master key');
 
-  test.equal(notifier.config.APN, true, 'APN should be true');
-  test.equal(notifier.config.email, true, 'email should be true');
-  test.ok(true, notifier.config.tplPath);
-  test.equal(notifier.config.actions.length, 2, 'Should have two actions');
-  test.equal(notifier.config.key, 'SERVICE_KEY', 'Should contain the service key');
-  test.equal(notifier.config.parseAppId, 'APP_ID', 'Should contain the parse api app id');
-  test.equal(notifier.config.parseApiKey, 'MASTER_KEY', 'Should contain the master key');
+    // change the email config
+    notifier.use({ email: false });
 
-  // change the email config
-  notifier.use({ email: false });
+    test.equal(notifier.config.email, false, 'email should be false');
 
-  test.equal(notifier.config.email, false, 'email should be false');
+    notifier.use({ tplPath: undefined })
 
-  notifier.use({ tplPath: undefined })
+    test.throws(function () {
+      notifier.send('comment', options)
+    }, 'Please specify a path to the template')
 
-  test.throws(function () {
-    notifier.send('comment', options)
-  }, 'Please specify a path to the template')
+    var template = tplPath + '/comment.jade';
+    var result = notifier.mail(options, template, function () {}).toString();
+    var expectedObj = {
+      From: 'harry@madhums.me',
+      To: 'tom@madhums.me',
+      Subject: 'Harry says Hi to you',
+      HtmlBody: '<h2>Hello Tom</h2><p>Harry commented on your post</p><br/><br/><p>-- Notifier Team</p>'
+    }.toString();
 
-  var template = tplPath + '/comment.jade';
-  var result = notifier.mail(options, template, function () {}).toString();
-  var expectedObj = {
-    From: 'harry@madhums.me',
-    To: 'tom@madhums.me',
-    Subject: 'Harry says Hi to you',
-    HtmlBody: '<h2>Hello Tom</h2><p>Harry commented on your post</p><br/><br/><p>-- Notifier Team</p>'
-  }.toString();
+    test.equal(result, expectedObj, 'Should be the expected object');
 
-  test.equal(result, expectedObj, 'Should be the expected object');
+    // Make sure the callback for send method is called only once
+    notifier.use({
+      tplPath: tplPath,
+      parseChannels: ['123']
+    })
+    notifier.use({ email: true });
+    notifier.use({ APN: true });
+    var once = 1;
+    notifier.send('comment', options, function (err) {
+      // Uncomment the below and replace
+      // `parseAppId` and `parseApiKey` in the config
+      // test.ifError(err);
+      test.equal(once, 1);
+      once = once + 1;
+      test.done();
+    });
+  }
 
-  test.done();
-}
+};
+

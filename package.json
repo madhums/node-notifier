@@ -24,7 +24,8 @@
     "node-parse-api": "0.2.x",
     "postmark": "0.1.x",
     "sendgrid": "0.2.x",
-    "jade": "0.35.x"
+    "jade": "0.35.x",
+    "lll": "0.0.3"
   },
   "devDependencies": {
     "nodeunit": "latest"
