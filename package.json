@@ -1,6 +1,6 @@
 {
   "name": "notifier",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A notifications module for node.js",
   "main": "index.js",
   "scripts": {
