@@ -62,7 +62,7 @@ module.exports = {
       notifier.send('comment', options)
     }, 'Please specify a path to the template')
 
-    var template = tplPath + '/comment.jade';
+    var template = tplPath + '/comment.pug';
     var result = notifier.mail(options, template, function () {}).toString();
     var expectedObj = {
       From: 'harry@madhums.me',
@@ -92,4 +92,3 @@ module.exports = {
   }
 
 };
-

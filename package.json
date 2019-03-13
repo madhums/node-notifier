@@ -21,14 +21,15 @@
     "notifications"
   ],
   "dependencies": {
+    "@sendgrid/mail": "~6.3.1",
+    "lll": "0.0.3",
     "node-parse-api": "0.3.x",
-    "postmark": "0.1.x",
-    "sendgrid": "0.2.x",
-    "jade": "0.35.x",
-    "lll": "0.0.3"
+    "postmark": "2.2.x",
+    "pug": "~2.0.3"
   },
   "devDependencies": {
-    "nodeunit": "latest"
+    "nodeunit": "latest",
+    "npm-check-updates": "~3.0.5"
   },
   "author": {
     "name": "Madhusudhan Srinivasa",
